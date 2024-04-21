@@ -1,5 +1,6 @@
 package com.example.course.Models;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Employees {
@@ -8,7 +9,7 @@ public class Employees {
     private String lastName;
     private String middleName;
     private int position;
-    private Date hireDate;
+    private LocalDate hireDate;
     private String phoneNumber;
     private String address;
     private int status;
@@ -54,11 +55,11 @@ public class Employees {
         this.position = position;
     }
 
-    public Date getHireDate() {
+    public LocalDate getHireDate() {
         return hireDate;
     }
 
-    public void setHireDate(Date hireDate) {
+    public void setHireDate(LocalDate hireDate) {
         this.hireDate = hireDate;
     }
 
@@ -94,7 +95,11 @@ public class Employees {
         this.salary = salary;
     }
 
-    public Employees(int id, String firstName, String lastName, String middleName, int position, Date hireDate, String phoneNumber, String address, int status, int salary) {
+    public Employees(int id, String firstName,
+                     String lastName, String middleName,
+                     int position, LocalDate hireDate,
+                     String phoneNumber, String address,
+                     int status, int salary) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

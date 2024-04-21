@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.course.Controllers.MainController">
    <children>
-      <Button fx:id="openTableB" layoutX="223.0" layoutY="235.0" mnemonicParsing="false" onMouseClicked="#openTable" prefHeight="180.0" prefWidth="354.0" text="Button" />
+      <ImageView fitHeight="650.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pictures/backgroundMain.jpeg" />
+         </image>
+      </ImageView>
+      <Button fx:id="tablePositions" layoutX="254.0" layoutY="452.0" mnemonicParsing="false" onMouseClicked="#openTablePositions" prefHeight="39.0" prefWidth="274.0" stylesheets="@CSS/Button.css" text="Должности" />
+      <Button fx:id="tableStatuses" layoutX="254.0" layoutY="500.0" mnemonicParsing="false" onMouseClicked="#openTableStatuses" prefHeight="39.0" prefWidth="274.0" stylesheets="@CSS/Button.css" text="Статусы сотрудников" />
+      <Button fx:id="tableEmployees" layoutX="254.0" layoutY="154.0" mnemonicParsing="false" onMouseClicked="#openTableEmployees" prefHeight="39.0" prefWidth="274.0" stylesheets="@CSS/Button.css" text="Сотрудники" />
+      <Button fx:id="tableEducation" layoutX="254.0" layoutY="202.0" mnemonicParsing="false" onMouseClicked="#openTableEducation" prefHeight="39.0" prefWidth="274.0" stylesheets="@CSS/Button.css" text="Образование" />
+      <Button fx:id="tableDepartments" layoutX="254.0" layoutY="249.0" mnemonicParsing="false" onMouseClicked="#openTableDepartments" prefHeight="39.0" prefWidth="274.0" stylesheets="@CSS/Button.css" text="Кафедры" />
+      <Button fx:id="tableCourses" layoutX="254.0" layoutY="297.0" mnemonicParsing="false" onMouseClicked="#openTableCourses" prefHeight="39.0" prefWidth="274.0" stylesheets="@CSS/Button.css" text="Учебные курсы" />
+      <Button fx:id="tableResearch" layoutX="254.0" layoutY="345.0" mnemonicParsing="false" onMouseClicked="#openTableResearch" prefHeight="39.0" prefWidth="274.0" stylesheets="@CSS/Button.css" text="Исследования" />
+      <Button fx:id="exit" layoutX="285.0" layoutY="588.0" mnemonicParsing="false" onMouseClicked="#doExit" stylesheets="@CSS/Button.css" text="Закрыть программу" />
    </children>
 </AnchorPane>

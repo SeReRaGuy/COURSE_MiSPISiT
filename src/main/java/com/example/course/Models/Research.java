@@ -1,5 +1,6 @@
 package com.example.course.Models;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Research {
@@ -7,8 +8,8 @@ public class Research {
     private int department;
     private String projectName;
     private int leadEmployee;
-    private Date startDate;
-    private Date endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private int fundingAmount;
 
     public int getId() {
@@ -43,19 +44,19 @@ public class Research {
         this.leadEmployee = leadEmployee;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
@@ -67,7 +68,7 @@ public class Research {
         this.fundingAmount = fundingAmount;
     }
 
-    public Research(int id, int department, String projectName, int leadEmployee, Date startDate, Date endDate, int fundingAmount) {
+    public Research(int id, int department, String projectName, int leadEmployee, LocalDate startDate, LocalDate endDate, int fundingAmount) {
         this.id = id;
         this.department = department;
         this.projectName = projectName;

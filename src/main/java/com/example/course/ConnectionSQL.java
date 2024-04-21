@@ -6,11 +6,18 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class ConnectionSQL {
-    public static Connection doConnect() throws SQLException {
-        PGSimpleDataSource dataSource = new PGSimpleDataSource();
-        dataSource.setUser("postgres");
-        dataSource.setPassword("12345");
-        dataSource.setDatabaseName("Employees_VUZ");
-        return dataSource.getConnection();
+    private static Connection INSTANCE;
+    public ConnectionSQL() throws SQLException {
+    }
+    public static Connection getInstance() throws SQLException {
+        if (INSTANCE == null)
+        {
+            PGSimpleDataSource dataSource = new PGSimpleDataSource();
+            dataSource.setUser("postgres");
+            dataSource.setPassword("12345");
+            dataSource.setDatabaseName("Employees_VUZ");
+            INSTANCE = dataSource.getConnection();
+        }
+        return INSTANCE;
     }
 }

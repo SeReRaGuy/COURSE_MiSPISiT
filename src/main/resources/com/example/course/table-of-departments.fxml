@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.course.Controllers.TableOfDepartments">
+   <children>
+      <ImageView fitHeight="650.0" fitWidth="800.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pictures/backgroundTable.jpeg" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tableDepartments" layoutX="16.0" layoutY="14.0" prefHeight="274.0" prefWidth="769.0">
+        <columns>
+          <TableColumn fx:id="idColumn" prefWidth="23.0" text="ID" />
+          <TableColumn fx:id="nameColumn" prefWidth="231.0" text="Название кафедры" />
+            <TableColumn fx:id="headColumn" prefWidth="514.0" text="Заведующий кафедры" />
+        </columns>
+      </TableView>
+      <TextField fx:id="nameField" layoutX="16.0" layoutY="484.0" promptText="Название кафедры" stylesheets="@CSS/TextField.css" />
+      <TextField fx:id="idField" layoutX="16.0" layoutY="452.0" prefHeight="15.0" prefWidth="171.0" promptText="ID" stylesheets="@CSS/TextField.css" />
+      <TextField fx:id="headField" layoutX="16.0" layoutY="516.0" promptText="Заведующий кафедры (ID)" stylesheets="@CSS/TextField.css" />
+      <Button fx:id="doAdd" layoutX="42.0" layoutY="310.0" mnemonicParsing="false" onMouseClicked="#add" prefHeight="25.0" prefWidth="149.0" stylesheets="@CSS/Button.css" text="Добавить" />
+      <Button fx:id="doChange" layoutX="42.0" layoutY="356.0" mnemonicParsing="false" onMouseClicked="#change" prefHeight="25.0" prefWidth="149.0" stylesheets="@CSS/Button.css" text="Изменить" />
+      <Button fx:id="doDelete" layoutX="42.0" layoutY="404.0" mnemonicParsing="false" onMouseClicked="#delete" prefHeight="25.0" prefWidth="149.0" stylesheets="@CSS/Button.css" text="Удалить" />
+      <Button fx:id="goToMainMenu" layoutX="16.0" layoutY="588.0" mnemonicParsing="false" onMouseClicked="#openMain" prefHeight="25.0" prefWidth="769.0" stylesheets="@CSS/Button.css" text="Вернуться на главную" />
+      <TableView fx:id="tableEmployees" layoutX="227.0" layoutY="310.0" prefHeight="237.0" prefWidth="558.0">
+         <columns>
+            <TableColumn fx:id="idColumnE" prefWidth="23.0" text="ID" />
+            <TableColumn fx:id="firstNameColumn" prefWidth="131.0" text="Имя" />
+            <TableColumn fx:id="lastNameColumn" prefWidth="118.0" text="Фамилия" />
+            <TableColumn fx:id="middleNameColumn" minWidth="0.0" prefWidth="141.0" text="Отчество" />
+            <TableColumn fx:id="positionColumn" minWidth="0.0" prefWidth="126.0" text="Должность" />
+            <TableColumn fx:id="hireDateColumn" prefWidth="154.0" text="Дата приёма на работу" />
+            <TableColumn fx:id="phoneNumberColumn" prefWidth="151.0" text="Номер телефона" />
+            <TableColumn fx:id="addressColumn" minWidth="6.0" prefWidth="119.0" text="Адрес" />
+            <TableColumn fx:id="statusColumn" minWidth="0.0" prefWidth="115.0" text="Статус" />
+            <TableColumn fx:id="salaryColumn" minWidth="0.0" prefWidth="101.0" text="Зарплата" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

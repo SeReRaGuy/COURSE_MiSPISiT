@@ -1,0 +1,7 @@
+.text-field {
+    -fx-pref-width: 100px;
+    -fx-pref-height: 10px;
+    -fx-border-color: black;
+    -fx-font-family: "T-FLEX Type A";
+    -fx-font-size: 9px;
+}

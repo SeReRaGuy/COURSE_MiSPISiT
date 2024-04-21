@@ -1,0 +1,16 @@
+.button {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #3b3b3b;
+    -fx-opacity: 0.8;
+    -fx-border-width: 3;
+    -fx-border-radius: 3;
+    -fx-border-insets: -1;
+    -fx-font-family: "T-FLEX Type A";
+    -fx-font-size: 20;
+    -fx-cursor: hand;}
+.button:hover {
+    -fx-background-color: #ababab;
+}
+.button:pressed {
+    -fx-background-color: #484848;
+}

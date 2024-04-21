@@ -14,7 +14,7 @@ public class ProgramStart extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(ProgramStart.class.getResource("start-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 650);
         stage.setTitle("Сотрудники ВУЗа: Учёт");
-        stage.getIcons().add(new Image("/")); //Добавить
+        stage.getIcons().add(new Image("E:/Universitet/6 semestr_code PC/KURS_MiSPISiT/COURSE/src/main/resources/com/example/course/pictures/icon.png"));
         stage.setScene(scene);
         stage.show();
     }

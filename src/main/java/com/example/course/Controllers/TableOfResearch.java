@@ -1,7 +1,10 @@
 package com.example.course.Controllers;
 
 import com.example.course.ConnectionSQL;
-import com.example.course.Models.*;
+import com.example.course.Models.Courses;
+import com.example.course.Models.Departments;
+import com.example.course.Models.Employees;
+import com.example.course.Models.Research;
 import com.example.course.ProgramStart;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,8 +18,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 
-public class TableOfCourses {
-    public TableOfCourses() throws SQLException {}
+public class TableOfResearch {
+    public TableOfResearch() throws SQLException {}
     private final Connection connect = ConnectionSQL.getInstance();
     @FXML
     private Button goToMainMenu;
@@ -29,21 +32,33 @@ public class TableOfCourses {
     @FXML
     private TextField idField;
     @FXML
-    private TextField courseNameField;
-    @FXML
     private TextField departmentField;
     @FXML
-    private TextField instructorField;
+    private TextField projectNameField;
     @FXML
-    private TableView<Courses> tableCourses;
+    private TextField leadEmployeeField;
     @FXML
-    private TableColumn<Courses, Integer> idColumn;
+    private DatePicker startDateField;
     @FXML
-    private TableColumn<Courses, String> courseNameColumn;
+    private DatePicker endDateField;
     @FXML
-    private TableColumn<Courses, Integer> departmentColumn;
+    private TextField fundingAmountField;
     @FXML
-    private TableColumn<Courses, Integer> instructorColumn;
+    private TableView<Research> tableResearch;
+    @FXML
+    private TableColumn<Research, Integer> idColumn;
+    @FXML
+    private TableColumn<Research, String> departmentColumn;
+    @FXML
+    private TableColumn<Research, Integer> projectNameColumn;
+    @FXML
+    private TableColumn<Research, Integer> leadEmployeeColumn;
+    @FXML
+    private TableColumn<Research, Integer> startDateColumn;
+    @FXML
+    private TableColumn<Research, Integer> endDateColumn;
+    @FXML
+    private TableColumn<Research, Integer> fundingAmountColumn;
     @FXML
     private TableView<Departments> tableDepartments;
     @FXML
@@ -80,10 +95,10 @@ public class TableOfCourses {
     }
     @FXML
     private void LoadTableCourses() throws SQLException {
-        ObservableList<Courses> List = FXCollections.observableArrayList();
+        ObservableList<Research> List = FXCollections.observableArrayList();
         ObservableList<Departments> ListD = FXCollections.observableArrayList();
         ObservableList<Employees> ListE = FXCollections.observableArrayList();
-        String sqlSelectCourses = "SELECT * FROM courses";
+        String sqlSelectCourses = "SELECT * FROM research";
         String sqlSelectD = "SELECT * FROM departments";
         String sqlSelectE = "SELECT * FROM employees";
         PreparedStatement preparedStatement = connect.prepareStatement(sqlSelectCourses);
@@ -91,15 +106,20 @@ public class TableOfCourses {
         PreparedStatement preparedStatementE = connect.prepareStatement(sqlSelectE);
 
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        courseNameColumn.setCellValueFactory(new PropertyValueFactory<>("courseName"));
         departmentColumn.setCellValueFactory(new PropertyValueFactory<>("department"));
-        instructorColumn.setCellValueFactory(new PropertyValueFactory<>("instructor"));
+        projectNameColumn.setCellValueFactory(new PropertyValueFactory<>("projectName"));
+        leadEmployeeColumn.setCellValueFactory(new PropertyValueFactory<>("leadEmployee"));
+        startDateColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+        endDateColumn.setCellValueFactory(new PropertyValueFactory<>("endDate"));
+        fundingAmountColumn.setCellValueFactory(new PropertyValueFactory<>("fundingAmount"));
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
-            List.add(new Courses(resultSet.getInt(1), resultSet.getString(2),
-                    resultSet.getInt(3), resultSet.getInt(4)));
+            List.add(new Research(resultSet.getInt(1), resultSet.getInt(2),
+                    resultSet.getString(3), resultSet.getInt(4),
+                    resultSet.getDate(5).toLocalDate(), resultSet.getDate(6).toLocalDate(),
+                    resultSet.getInt(7)));
         }
-        tableCourses.setItems(List);
+        tableResearch.setItems(List);
 
         idColumnD.setCellValueFactory(new PropertyValueFactory<>("id"));
         nameColumnD.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -143,41 +163,51 @@ public class TableOfCourses {
 
     @FXML
     private void add() throws SQLException {
-        String addRecord = "INSERT INTO courses VALUES (?,?,?,?)";
+        String addRecord = "INSERT INTO research VALUES (?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement = connect.prepareStatement(addRecord);
         preparedStatement.setInt(1, Integer.parseInt(idField.getText()));
-        preparedStatement.setString(2, courseNameField.getText());
-        preparedStatement.setInt(3, Integer.parseInt(departmentField.getText()));
-        preparedStatement.setInt(4, Integer.parseInt(instructorField.getText()));
+        preparedStatement.setInt(2, Integer.parseInt(departmentField.getText()));
+        preparedStatement.setString(3, projectNameField.getText());
+        preparedStatement.setInt(4, Integer.parseInt(leadEmployeeField.getText()));
+        preparedStatement.setDate(5, Date.valueOf(startDateField.getValue()));
+        preparedStatement.setDate(6, Date.valueOf(endDateField.getValue()));
+        preparedStatement.setInt(7, Integer.parseInt(fundingAmountField.getText()));
         preparedStatement.executeUpdate();
         LoadTableCourses();
     }
     @FXML
     private void delete() throws SQLException {
-        String deleteRecord = "DELETE FROM courses WHERE id = ?";
+        String deleteRecord = "DELETE FROM research WHERE id = ?";
         PreparedStatement preparedStatement = connect.prepareStatement(deleteRecord);
-        preparedStatement.setInt(1, tableCourses.getSelectionModel().getSelectedItem().getId());
+        preparedStatement.setInt(1, tableResearch.getSelectionModel().getSelectedItem().getId());
         preparedStatement.executeUpdate();
         LoadTableCourses();
 
     }
     @FXML
     private void change() throws SQLException {
-        String editRecord = "UPDATE courses SET id = ?, course_name = ?, department = ?, instructor = ?  WHERE id = ?";
+        String editRecord = "UPDATE research SET id = ?, department = ?, project_name = ?, lead_employee = ?," +
+                "start_date = ?, end_date = ?, funding_amount = ? WHERE id = ?";
         PreparedStatement preparedStatement = connect.prepareStatement(editRecord);
-        Courses courses = tableCourses.getSelectionModel().getSelectedItem();
-        int where = courses.getId();
+        Research research = tableResearch.getSelectionModel().getSelectedItem();
+        int where = research.getId();
 
-        courses.setId(Integer.parseInt(idField.getText()));
-        courses.setCourseName(courseNameField.getText());
-        courses.setDepartment(Integer.parseInt(departmentField.getText()));
-        courses.setInstructor(Integer.parseInt(instructorField.getText()));
+        research.setId(Integer.parseInt(idField.getText()));
+        research.setDepartment(Integer.parseInt(departmentField.getText()));
+        research.setProjectName(projectNameField.getText());
+        research.setLeadEmployee(Integer.parseInt(leadEmployeeField.getText()));
+        research.setStartDate(startDateField.getValue());
+        research.setEndDate(endDateField.getValue());
+        research.setFundingAmount(Integer.parseInt(fundingAmountField.getText()));
 
         preparedStatement.setInt(1, Integer.parseInt(idField.getText()));
-        preparedStatement.setString(2, courseNameField.getText());
-        preparedStatement.setInt(3, Integer.parseInt(departmentField.getText()));
-        preparedStatement.setInt(4, Integer.parseInt(instructorField.getText()));
-        preparedStatement.setInt(5, where);
+        preparedStatement.setInt(2, Integer.parseInt(departmentField.getText()));
+        preparedStatement.setString(3, projectNameField.getText());
+        preparedStatement.setInt(4, Integer.parseInt(leadEmployeeField.getText()));
+        preparedStatement.setDate(5, Date.valueOf(startDateField.getValue()));
+        preparedStatement.setDate(6, Date.valueOf(endDateField.getValue()));
+        preparedStatement.setInt(7, Integer.parseInt(fundingAmountField.getText()));
+        preparedStatement.setInt(8, where);
         preparedStatement.executeUpdate();
         LoadTableCourses();
     }
