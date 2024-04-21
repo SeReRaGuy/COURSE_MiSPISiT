@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.course.Controllers.MainController">
+   <children>
+      <Button fx:id="openTableB" layoutX="223.0" layoutY="235.0" mnemonicParsing="false" onMouseClicked="#openTable" prefHeight="180.0" prefWidth="354.0" text="Button" />
+   </children>
+</AnchorPane>

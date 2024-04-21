@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.course.Controllers.TableOfCourses">
+   <children>
+      <TableView fx:id="tableCourses" layoutX="16.0" layoutY="14.0" prefHeight="274.0" prefWidth="769.0">
+        <columns>
+          <TableColumn fx:id="idColumn" prefWidth="38.0" text="ID" />
+          <TableColumn fx:id="courseNameColumn" prefWidth="274.0" text="Название курса" />
+            <TableColumn fx:id="departmentColumn" prefWidth="234.0" text="Кафедра" />
+            <TableColumn fx:id="instructorColumn" prefWidth="222.0" text="Преподаватель" />
+        </columns>
+      </TableView>
+      <TextField fx:id="idField" layoutX="326.0" layoutY="434.0" promptText="ID" />
+      <TextField fx:id="departmentField" layoutX="326.0" layoutY="484.0" promptText="Кафедра" />
+      <TextField fx:id="courseNameField" layoutX="326.0" layoutY="459.0" promptText="Название курса" />
+      <TextField fx:id="instructorField" layoutX="326.0" layoutY="509.0" promptText="Преподаватель" />
+      <Button fx:id="doAdd" layoutX="177.0" layoutY="409.0" mnemonicParsing="false" onMouseClicked="#add" prefHeight="25.0" prefWidth="149.0" text="Добавить" />
+      <Button fx:id="doChange" layoutX="326.0" layoutY="409.0" mnemonicParsing="false" onMouseClicked="#change" prefHeight="25.0" prefWidth="149.0" text="Изменить" />
+      <Button fx:id="doDelete" layoutX="475.0" layoutY="409.0" mnemonicParsing="false" onMouseClicked="#delete" prefHeight="25.0" prefWidth="149.0" text="Удалить" />
+      <Button fx:id="goToMainMenu" layoutX="16.0" layoutY="611.0" mnemonicParsing="false" onMouseClicked="#openMain" prefHeight="25.0" prefWidth="769.0" text="Вернуться на главную" />
+   </children>
+</AnchorPane>
