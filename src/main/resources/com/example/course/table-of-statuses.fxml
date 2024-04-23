@@ -18,7 +18,7 @@
         </columns>
       </TableView>
       <TextField fx:id="idField" layoutX="300.0" layoutY="434.0" promptText="ID" stylesheets="@CSS/TextField.css" />
-      <TextField fx:id="nameField" layoutX="300.0" layoutY="464.0" promptText="Название должности" stylesheets="@CSS/TextField.css" />
+      <TextField fx:id="nameField" layoutX="300.0" layoutY="464.0" promptText="Название статуса" stylesheets="@CSS/TextField.css" />
       <Button fx:id="doAdd" layoutX="177.0" layoutY="386.0" mnemonicParsing="false" onMouseClicked="#add" prefHeight="25.0" prefWidth="149.0" stylesheets="@CSS/Button.css" text="Добавить" />
       <Button fx:id="doChange" layoutX="326.0" layoutY="386.0" mnemonicParsing="false" onMouseClicked="#change" prefHeight="25.0" prefWidth="149.0" stylesheets="@CSS/Button.css" text="Изменить" />
       <Button fx:id="doDelete" layoutX="475.0" layoutY="386.0" mnemonicParsing="false" onMouseClicked="#delete" prefHeight="25.0" prefWidth="149.0" stylesheets="@CSS/Button.css" text="Удалить" />
