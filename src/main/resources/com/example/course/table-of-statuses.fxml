@@ -14,7 +14,7 @@
       <TableView fx:id="tableStatuses" layoutX="16.0" layoutY="14.0" prefHeight="274.0" prefWidth="769.0">
         <columns>
           <TableColumn fx:id="idColumn" prefWidth="44.0" text="ID" />
-          <TableColumn fx:id="nameColumn" prefWidth="724.0" text="Название должности" />
+          <TableColumn fx:id="nameColumn" prefWidth="724.0" text="Название статуса" />
         </columns>
       </TableView>
       <TextField fx:id="idField" layoutX="300.0" layoutY="434.0" promptText="ID" stylesheets="@CSS/TextField.css" />
